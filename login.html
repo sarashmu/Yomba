@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Log In or Sign Up</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- jQueryUI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style/yomba.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <!--Header-->
+  <header>
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- We allocate two columns for our website logo. -->
+        <div class="col-md-2 nav-padded">
+          <a class="navbar-brand" href="./home.html">
+            <img id="logo" src="images/logo.png" alt="Yomba">
+          </a>
+        </div>
+        <div class="col-md-5 nav-padded text-center">
+          <!-- We allocate 5 columns for our search bar. It supports autocomplete and variable placeholders. -->
+          <form>
+            <div class="input-group">
+              <input class="form-control form-custom" id="search" type="text" placeholder="Search" aria-label="Search">
+              <span class="input-group-btn">
+                <button class="btn dominant-color" type="submit"><img src="images/search.png" alt="Search"></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-5 nav-padded text-md-right">
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <div class="dropdown show" id="show-notifications">
+            <a href="#" role="button" id="notificationsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="icon" src="images/bell.png" alt="Notifications">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
+              <a class="dropdown-item" href="#">Rex B. shared a new video.</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Your upload has been processed!</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">4 videos we think you'd enjoy.</a>
+            </div>
+          </div>
+          <!-- This log in button is only shown if the user is logged out. -->
+          <form action="login.html" id="show-login">
+            <input class="btn dominant-color" type="submit" value="Login">
+          </form>
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <!-- The user can use it to log out.-->
+          <div class="dropdown show" id="show-user">
+            <a href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img id="profile" class="icon rounded" src="images/profile.png" alt="Profile">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">Upload a Video</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Account</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Communities</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="javascript:logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- The wrap div is necessary for our footer to remain at the bottom of our content. -->
+  <div id="wrap">
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid" id="main">
+      <!-- This div represents the log in page. -->
+      <!-- It is partially adapted from Amazon's login / register page and https://bootsnipp.com/snippets/kEzq3. -->
+      <div id="accountLogin">
+        <!-- We name this form, to differentiate it from our account creating form. -->
+        <form id="login-form">
+          <div class="form-group">
+            <h4>Sign In</h4>
+          </div>
+          <!-- Each form input is wrapped by a label, and stored within a form group. -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="signinEmail" type="email" maxlength="50" class="form-control required" placeholder="Enter email" required>
+          </div>
+          <!-- The forgot password text is smaller, because it is less used. -->
+          <span class="float-right">
+            <small><a href="#">Forgot your password?</a></small>
+          </span>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <!-- The form validation is done using HTML features, like regex pattern verification. -->
+            <input id="signinPassword" type="password" maxlength="25" class="form-control required" placeholder="Enter password" pattern="^[a-zA-Z0-9]+$" required>
+          </div>
+          <!-- Shown to the user when the wrong information is entered. -->
+          <p class="text-danger" id="incorrect-password"><small>The username or password you entered is incorrect.</small></p>
+          <div class="form-group">
+            <button type="submit" class="btn dominant-color btn-block">Sign In</button>
+          </div>
+          <div class="form-group divider">
+            <p class="descriptive-text text-center">New to Yomba? We'd love to have you here.</p>
+          </div>
+          <button type="button" id="createAccount" class="btn secondary-color btn-block">Create an Account</button><br>
+          <!-- We alert the user to his or her rights. -->
+          <p class="descriptive-text">By signing into Yomba you are agreeing to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
+        </form>
+      </div>
+      <!-- This div represents the account creation page. -->
+      <div id="newAccount">
+        <form id="account-form" name="account-form" method="post">
+          <!-- If the user is logged in, his or her account information will be displayed. -->
+          <div class="row">
+            <!-- Two columns are used, and they are centered by offsetting the columns in Bootstrap. -->
+            <div class="col-md-3 offset-md-3"><h4>Account Information</h4></div>
+          </div>
+          <!-- Two rows are used for a section title and its content, to ensure that the fields are aligned in the second row. -->
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control required" placeholder="Enter username" required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control required" id="password" maxlength=8 pattern="^[a-zA-Z0-9]+$" placeholder="Enter password" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-3"><h4>Personal Information</h4></div>
+          </div>
+          <!-- Two rows are used for a section title and its content, to ensure that the fields are aligned in the second row. -->
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="name">First & Last Name</label>
+                <input type="text" id="name" class="form-control required" placeholder="Enter your name" required>
+              </div>
+              <div class="form-group">
+                <label for="birthday">Birthday</label>
+                <input type="text" id="birthday" class="form-control required" required>
+              </div>
+              <div class="form-group">
+                <label for="select-profile">Profile Picture</label>
+                <input id="select-profile" type="file" class="form-control" multiple>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control required" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                <label for="language">Language</label>
+                <select id="language" class="form-control">
+                  <option value="english">English</option>
+                  <option value="spanish">Spanish</option>
+                  <option value="french">French</option>
+                  <option value="german">German</option>
+                </select>
+              </div>
+              <br>
+              <!-- The contents of this img element are modified if the user selects a picture from disk. -->
+              <div>
+                <img id="profile-login" class="rounded" alt="Profile Picture" src="images/profile.png" width=60 height=60>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-3"><h4>Billing Information</h4></div>
+          </div>
+          <!-- Two rows are used for a section title and its content, to ensure that the fields are aligned in the second row. -->
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" class="form-control required" placeholder="Enter your address" required>
+              </div>
+              <!-- When a different payment method is selected, JavaScript switches out certain divs accordingly. -->
+              <div class="form-group">
+                <label for="payment">Payment Method</label>
+                <select name="payment" id="payment" class="form-control" onchange="paymentMethod()" required>
+                  <option value="">Choose</option>
+                  <option value="credit">Credit Card</option>
+                  <option value="paypal">Paypal</option>
+                  <option value="bank">Bank Transfer</option>
+                </select>
+              </div>
+            </div>
+            <!-- The fields shown if the payment method is credit card. -->
+            <div id="credit-div" class="col-md-3">
+              <div class="form-group">
+                <label for="card-number">Number</label>
+                <input type="text" id="card-number" placeholder="Enter your card number" class="form-control required">
+              </div>
+              <div class="form-group">
+                <label for="validity">Valid Through</label>
+                <input type="text" id="validity" class="form-control required">
+              </div>
+              <div class="form-group">
+                <label for="code">Code</label>
+                <input type="text" id="code" placeholder="Enter your code" class="form-control required">
+              </div>
+            </div>
+            <!-- The fields shown if the payment method is bank transfer. -->
+            <div id="bank-div" class="col-md-3">
+              <div class="form-group">
+                <label for="account-holder-name">Account Holder Name</label>
+                <input type="text" id="account-holder-name" placeholder="Enter the account holder name" class="form-control required">
+              </div>
+              <div class="form-group">
+                <label for="account-number">Account Number</label>
+                <input type="text" id="account-number" placeholder="Enter the account number" class="form-control required">
+              </div>
+              <div class="form-group">
+                <label for="bank-name">Bank Name</label>
+                <input type="text" id="bank-name" placeholder="Enter the bank name" class="form-control required">
+              </div>
+            </div>
+          </div>
+          <!-- This content is inserted in one column, which takes up 50% of the screen's real estate, in the center. -->
+          <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+              <label>I have read and agree to terms of use, privacy policy and use of cookies. <input type="checkbox" name="terms" required></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <button type="submit" class="btn dominant-color btn-block">Save</button>
+            </div>
+            <div class="col-md-3">
+              <button type="button" id="restore" class="btn secondary-color btn-block">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- We store JavaScript at the bottom for quicker loading. -->
+  <footer class="description-text additional-text">
+    <p>
+      <a href="#">Privacy Policy</a> / <a href="#">Terms and Conditions</a><br>
+      <b>Designed by</b> Anya Bali / Elliott Bolzan / Carrie Mittl / Sara Shmueli
+    </p>
+  </footer>
+  <!-- We store JavaScript at the bottom for quicker loading. -->
+  <!-- jQuery, jQueryUI, Popper.js, and Boostrap are loaded. -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <!-- Our project JavaScript. -->
+  <script src="script/common.js"></script>
+  <script src="script/login.js"></script>
+</body>
+</html>

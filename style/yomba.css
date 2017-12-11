@@ -1,0 +1,476 @@
+/* Our CSS file for the project. We chose to unify all our CSS in one file, to ensure our pages look similar visually. */
+
+/* To facilitate debugging and limit unwanted suprises. */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Project-wide font and background choices. */
+html, body {
+  height: 100%;
+  font-family: Helvetica;
+  background-color: #fdfdff;
+}
+
+/* We wanted to separate our header visually from our background. */
+header {
+  background-color: #fafafa;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 10px;
+}
+
+/* Center navigation bar content vertically. */
+.nav-padded {
+  padding-top: 12px;
+}
+
+/* Center navigation bar content vertically. */
+.icon {
+  margin: 0px 14px;
+}
+
+#logo {
+  width: 110px;
+}
+
+/* Limit our profile picture size. */
+#profile {
+  width: 40px;
+  height: 40px;
+}
+
+/* Align our icons and dropdown menus in our navigation bar. */
+#show-user, #show-notifications, #show-login {
+  display: inline-block;
+}
+
+/* Necessary for footer layout. */
+#wrap {
+  min-height: 100%;
+}
+
+/* Necessary for footer layout. */
+#main {
+  padding-bottom: 50px;
+  padding-right: 0px;
+}
+
+/* Align our dropdown menu with the header's bottom border. */
+.dropdown-menu {
+  margin: 22px 0px;
+}
+
+/* Place our footer after all our content. */
+footer {
+  position: relative;
+  display: block;
+  margin-top: -50px;
+  height: 50px;
+  clear: both;
+  padding: 20px;
+  padding-bottom: 70px;
+}
+
+footer, .community-details {
+  display: block;
+  text-align: center;
+}
+
+/* Customize the glow around form input's to match Yomba's style. */
+.form-control:focus {
+  border-color: #62929e;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Customize the glow around form input's to match Yomba's style. */
+.btn:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Necessary in Firefox to prevent required form elements from being outlined in red prior to the user's submission. */
+input:invalid {
+  box-shadow: none;
+}
+
+.additional-text {
+  color: #95A5A6;
+}
+
+/* Establish our color scheme. */
+.dominant-color {
+  background-color: #62929e;
+  color: #fdfdff;
+}
+
+/* Establish our color scheme. */
+.dominant-color:hover, .dominant-color:active {
+  background-color: #4a7a87;
+}
+
+/* Establish our color scheme. */
+.secondary-color {
+  background-color: #c6c5b9;
+  color: #fdfdff;
+}
+
+/* Establish our color scheme. */
+.secondary-color:hover, .secondary-color:active {
+  background-color: #a8a799;
+}
+
+/* Make minor changes, not covered by Bootstrap originally, to our smaller layouts. */
+/* Centering, growing, etc. */
+@media (max-width: 768px) {
+  [class*='col-'] {
+    text-align: center;
+  }
+  .comment {
+    text-align: left;
+  }
+  .row {
+    margin: auto 0px;
+  }
+  .dominant-color {
+    width: 100%;
+  }
+  .sidebar {
+    margin-top: 20px;
+  }
+}
+
+/* Give our thumbnail carousels some space. */
+.members, .video-section {
+  padding: 30px 60px 10px 60px;
+}
+
+/* Customize our links. */
+a:link, a:visited {
+  color: #95A5A6;
+  text-decoration: none;
+}
+
+/* Customize our links. */
+a:hover, a:active {
+  color: #768687;
+  text-decoration: none;
+}
+
+/* Customize our headers. */
+h4 {
+  padding: 20px 0px;
+  margin: auto -5px;
+}
+
+/* Customize our headers. */
+h6 {
+  text-align: center;
+}
+
+/* Customize our member profile pictures. */
+.member img, .video-author img, .comment img {
+  border-radius: 50%;
+  border: 4px solid #b0b0b0;
+  margin: auto;
+}
+
+/* Customize our member profile pictures. */
+.member img, .video-author img {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Customize our member profile pictures – in the comments section. */
+.comment img {
+  display: inline-block;
+}
+
+/* Customize our member div. */
+.member {
+  text-align: center;
+}
+
+.member-name {
+  font-size: 14px;
+  color: #95A5A6;
+}
+
+.member-content {
+  padding-top: 20px;
+}
+
+/* Change our member profile picture real estate on the carousel. */
+.member-content .slick-slide {
+  width: 150px;
+  margin: 0 25px;
+}
+
+/* Change our thumbnail real estate on the carousel. */
+.video-content .slick-slide {
+  width: 321px;
+  margin: 0 4px;
+}
+
+/* Change the spacing for our carousels. */
+.member-content .slick-list, .video-content .slick-list {
+  margin: 0 10px;
+}
+
+/* Change our carousel previous and next arrows. */
+.slick-next:before, .slick-prev:before {
+  content: "";
+  display: block;
+  height: 22px;
+  width: 22px;
+}
+
+/* Change our carousel previous and next arrows. */
+.slick-next:before {
+  background: url('../images/right.png') no-repeat;;
+}
+
+/* Change our carousel previous and next arrows. */
+.slick-prev:before {
+  background: url('../images/left.png') no-repeat;;
+}
+
+.description-text {
+  font-size: 12px;
+}
+
+/* Ensure our chat messages scroll properly. */
+.messages {
+  overflow-y: auto;
+  height: 260px;
+}
+
+/* Make our messages look like somewhat typical, iOS or FB messages. */
+.message {
+  border-radius: 4px;
+  padding: 8px;
+  margin: 2px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+/* Different color for messages from others. */
+.other-message {
+  background-color: #c6c5b9;
+}
+
+/* Different color for messages from the user. */
+.my-message {
+  color: #fdfdff;
+  background-color: #546a7b;
+}
+
+.post {
+  margin-top: 8px;
+}
+
+/* Used for video titles, authors, and number of views. */
+.outlined {
+  color: #fdfdff;
+  border-radius: 1px;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+/* Gives more importance to the title using color contrasts. */
+.title {
+  background: #62929e;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.author, .community-name {
+  background: #b0b0b0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* Smaller font-weight, because the concept of the view is less important in Yomba than the title or community. */
+.views {
+  background: #c6c5b9;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+/* Dark background: the community is crucial. */
+.community {
+  background: #393d3f;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.thumbnail {
+  padding-top: 5px;
+}
+
+.thumbnail img {
+  cursor: pointer;
+}
+
+/* Ensure the autocomplete window doesn't grow to fit its elements, which can be numerous. */
+.ui-autocomplete {
+  max-height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Center account login content. */
+#accountLogin {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Initially hide incorrect password message. */
+#incorrect-password {
+  display: none;
+}
+
+/* Titles for groups of video thumbnails. */
+.video-section-title {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* Subtitles for groups of video thumbnails. */
+.video-section-subtitle {
+  margin-left: 12px;
+  font-weight: 400;
+  font-size: 12px;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  color: #393d3f;
+}
+
+/* Make our sidebar sticky. */
+/* Note: position: sticky does not always validate in CSS validators, but we felt it is a great new invention that adds a lot to Yomba, so we used it. */
+.sidebar {
+  padding: 20px;
+  background-color: #e2e2e2;
+  border-radius: 2px;
+  overflow-y: auto;
+  position: sticky;
+  top: 0px;
+}
+
+.row, #sidebar-container {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Ensure emojis don't crowd text. */
+.emoji {
+  float: left;
+}
+
+/* Ensure emojis don't crowd text. */
+.emoji-text {
+  margin-left: 32px;
+}
+
+/* Different links in the sidebar. */
+.sidebar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* We use capitalization to indicate titles in the sidebar. */
+.sidebar-title {
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.sidebar-content {
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+/* Bold content that is hovered upon in the sidebar. */
+.hover-bold:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Provide an option for smaller text in the sidebar. */
+.sidebar-small, .message-author {
+  font-size: 11px;
+  font-weight: 200;
+}
+
+.sidebar-small {
+  padding-top: 10px;
+}
+
+.message-author {
+  display: block;
+}
+
+.sidebar-manage-browse-link:hover, .sidebar-company-link:hover {
+  font-weight: 300;
+  cursor: pointer;
+}
+
+/* Ensure our video does not take up all the available space and crowd the user. */
+.video-wrapper {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.metadata {
+  padding-top: 20px;
+}
+
+/* Give the video author the space s/he deserves. */
+.video-author img {
+  width: 70px;
+  height: 70px;
+}
+
+.comment-form {
+  margin-top: 10px;
+}
+
+.show-comments {
+  display: block;
+  margin: auto;
+}
+
+/* Ensure comments don't run into each other. Also ensure they are larger than their content. */
+.comment {
+  min-height: 120px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fafafa;
+  border-radius: 2px;
+  border: 1px solid #e2e2e2;
+}
+
+/* Dedicate lots of space to commentator's picture: they are Yomba's core, the people. */
+.comment img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.comment-text {
+  margin-left: 120px;
+}
+
+.comment-author {
+  font-weight: 400;
+  font-size: 12px;
+  padding-top: 2px;
+  text-transform: uppercase;
+}

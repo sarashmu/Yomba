@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Communities</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- jQueryUI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- Slick: Carousel for Images -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
+  <!-- Project CSS -->
+  <link rel="stylesheet" type="text/css" href="style/yomba.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <header>
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- We allocate two columns for our website logo. -->
+        <div class="col-md-2 nav-padded">
+          <a class="navbar-brand" href="./home.html">
+            <img id="logo" src="images/logo.png" alt="Yomba">
+          </a>
+        </div>
+        <div class="col-md-5 nav-padded text-center">
+          <!-- We allocate 5 columns for our search bar. It supports autocomplete and variable placeholders. -->
+          <form>
+            <div class="input-group">
+              <input class="form-control form-custom" id="search" type="text" placeholder="Search" aria-label="Search">
+              <span class="input-group-btn">
+                <button class="btn dominant-color" type="submit"><img src="images/search.png" alt="Search"></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-5 nav-padded text-md-right">
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <div class="dropdown show" id="show-notifications">
+            <a href="#" role="button" id="notificationsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="icon" src="images/bell.png" alt="Notifications">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
+              <a class="dropdown-item" href="#">Rex B. shared a new video.</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Your upload has been processed!</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">4 videos we think you'd enjoy.</a>
+            </div>
+          </div>
+          <!-- Clicking this button collapses the sidebar. -->
+          <a href="#">
+            <img class="icon" src="images/more.png" id="more" alt="Sidebar">
+          </a>
+          <!-- This log in button is only shown if the user is logged out. -->
+          <form action="login.html" id="show-login">
+            <input class="btn dominant-color" type="submit" value="Login">
+          </form>
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <!-- The user can use it to log out.-->
+          <div class="dropdown show" id="show-user">
+            <a href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img id="profile" class="icon rounded" src="images/profile.png" alt="Profile">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">Upload a Video</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Account</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Communities</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="javascript:logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- The wrap div is necessary for our footer to remain at the bottom of our content. -->
+  <div id="wrap">
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <!-- Our main content is 10 columns wide on full screens, but only 9 on smaller ones, to make the sidebar to be legible. -->
+        <div class="col-lg-10 col-md-9" id="content-container">
+          <div class="members">
+            <div class="video-section-title">Recommended Members</div>
+            <!-- A carousel showing the community's members is generated and inserted into this div through JavaScript. -->
+            <div class="member-content">
+            </div>
+          </div>
+          <!-- This div houses a number of thumbnails. -->
+          <!-- Its contents are automatically shuffled using JavaScript to simulate a real website. -->
+          <div class="video-section">
+            <div class="video-section-title">Recent Videos</div>
+            <div class="video-content">
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/1.jpg" alt="The Theater of the Absurd">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">The Theater of the Absurd</span><br/>
+                <span class="outlined author">by Frank G.</span>
+                <span class="outlined views">350k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/2.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Samuel Beckett: A Short Biography</span><br/>
+                <span class="outlined author">by Kira M.</span>
+                <span class="outlined views">122k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/3.jpg" alt="An Interview with Eugène Ionesco">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">An Interview with Eugène Ionesco</span><br/>
+                <span class="outlined author">by John F.</span>
+                <span class="outlined views">1.4k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/4.jpg" alt="A Day with Albert Camus">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">A Day with Albert Camus</span><br/>
+                <span class="outlined author">by Ahmed M.</span>
+                <span class="outlined views">21k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/5.jpg" alt="Camus's Plague and its Symbols">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Camus's Plague and its Symbols</span><br/>
+                <span class="outlined author">by Amanda Z.</span>
+                <span class="outlined views">12k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/6.jpg" alt="A Representation of Ionesco's Rhinoceros">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Ionesco's Rhinoceros</span><br/>
+                <span class="outlined author">by Jay B.</span>
+                <span class="outlined views">28k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/7.jpg" alt="La Leçon, by Ionesco">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">La Leçon, by Ionesco</span><br/>
+                <span class="outlined author">by Christian B.</span>
+                <span class="outlined views">144k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/8.jpg" alt="Mastroanni in the Stranger">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Mastroanni in the Stranger</span><br/>
+                <span class="outlined author">by Steph J.</span>
+                <span class="outlined views">1.6m views</span>
+              </div>
+            </div>
+          </div>
+          <div class="video-section">
+            <div class="video-section-title">Most Watched</div>
+            <div class="video-content">
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/1.jpg" alt="The Theater of the Absurd">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">The Theater of the Absurd</span><br/>
+                <span class="outlined author">by Frank G.</span>
+                <span class="outlined views">350k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/2.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Samuel Beckett: A Short Biography</span><br/>
+                <span class="outlined author">by Kira M.</span>
+                <span class="outlined views">122k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/9.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">An Absurdist Class Play</span><br/>
+                <span class="outlined author">by Mufasa M.</span>
+                <span class="outlined views">204k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/10.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Revolving Door: a Play</span><br/>
+                <span class="outlined author">by Clara F.</span>
+                <span class="outlined views">312k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/11.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Godot in Algiers</span><br/>
+                <span class="outlined author">by Fatima M.</span>
+                <span class="outlined views">267k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/12.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Les Justes: a Review</span><br/>
+                <span class="outlined author">by Cristina Z.</span>
+                <span class="outlined views">122k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/13.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Exit the King</span><br/>
+                <span class="outlined author">by Tomomi A.</span>
+                <span class="outlined views">582k views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- The sidebar is allocated more room on smaller screens, to ensure it remains legible when shrunken. -->
+        <div class="col-lg-2 col-md-3" id="sidebar-container">
+          <div class="sidebar">
+            <!-- A sidebar section that provides a description of the community. -->
+            <div>
+              <p class="sidebar-title">Theater of the Absurd</p>
+              <p class="sidebar-content">
+                A Yomba community uniting actors, readers, and playwrights with an interest in this existentialist brand of theater.
+              </p>
+              <p class="sidebar-small text-center">
+                16 members<br>since July, 2004
+              </p>
+            </div>
+            <hr>
+            <!-- A sidebar section that allows the user to read and post messages. -->
+            <div>
+              <p class="sidebar-title">Messages</p>
+              <div class="messages">
+                <p class="message other-message">Anyone know of a theater playing <i>Waiting for Godot</i> this weekend?</p>
+                <p class="message my-message">I heard there was a great representation in Lyon the other day.</p>
+                <p class="message other-message">Yeah, Madrid isn't going to see Godot for a few months...</p>
+              </div>
+              <!-- A form that allows the user to post messages. -->
+              <form class="post">
+                <div class="form-row">
+                  <div class="col-sm-12">
+                    <input class="form-control form-custom" id="message-draft" type="text" placeholder="Type..." aria-label="Type...">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <hr>
+            <!-- Smaller content, because less users will be interested in these company links. -->
+            <div class="sidebar-small text-center">
+              <span>
+                <span class="sidebar-company-link">About</span>
+                &nbsp;
+                <span class="sidebar-company-link">Press</span>
+                &nbsp;
+                <span class="sidebar-company-link">Contact</span>
+                &nbsp;
+                <span class="sidebar-company-link">Careers</span>
+              </span>
+              <br><br>
+              <span>
+                © 2017 <span class="sidebar-company-link">Yomba, LLC</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Our footer includes terms, a privacy policy, and the creators of the website. -->
+  <footer class="description-text additional-text">
+    <p>
+      <a href="#">Privacy Policy</a> / <a href="#">Terms and Conditions</a><br>
+      <b>Designed by</b> Anya Bali / Elliott Bolzan / Carrie Mittl / Sara Shmueli
+    </p>
+  </footer>
+  <!-- We store JavaScript at the bottom for quicker loading. -->
+  <!-- jQuery, jQueryUI, Popper.js, Slick and Boostrap are loaded. -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <!-- Our project JavaScript. -->
+  <script src="script/common.js"></script>
+  <script src="script/communities.js"></script>
+</body>
+</html>

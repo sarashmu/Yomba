@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Yomba</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- jQueryUI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- Slick: Carousel for Images -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
+  <!-- Project CSS -->
+  <link rel="stylesheet" type="text/css" href="style/yomba.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <header>
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- We allocate two columns for our website logo. -->
+        <div class="col-md-2 nav-padded">
+          <a class="navbar-brand" href="./home.html">
+            <img id="logo" src="images/logo.png" alt="Yomba">
+          </a>
+        </div>
+        <div class="col-md-5 nav-padded text-center">
+          <!-- We allocate 5 columns for our search bar. It supports autocomplete and variable placeholders. -->
+          <form>
+            <div class="input-group">
+              <input class="form-control form-custom" id="search" type="text" placeholder="Search" aria-label="Search">
+              <span class="input-group-btn">
+                <button class="btn dominant-color" type="submit"><img src="images/search.png" alt="Search"></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-5 nav-padded text-md-right">
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <div class="dropdown show" id="show-notifications">
+            <a href="#" role="button" id="notificationsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="icon" src="images/bell.png" alt="Notifications">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
+              <a class="dropdown-item" href="#">Rex B. shared a new video.</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Your upload has been processed!</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">4 videos we think you'd enjoy.</a>
+            </div>
+          </div>
+          <!-- Clicking this button collapses the sidebar. -->
+          <a href="#">
+            <img class="icon" id="more" src="images/more.png" alt="Sidebar">
+          </a>
+          <!-- This log in button is only shown if the user is logged out. -->
+          <form action="login.html" id="show-login">
+            <input class="btn dominant-color" type="submit" value="Login">
+          </form>
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <!-- The user can use it to log out.-->
+          <div class="dropdown show" id="show-user">
+            <a href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img id="profile" class="icon rounded" src="images/profile.png" alt="Profile">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">Upload a Video</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Account</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Communities</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="javascript:logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- The wrap div is necessary for our footer to remain at the bottom of our content. -->
+  <div id="wrap">
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <!-- Our main content is 10 columns wide on full screens, but only 9 on smaller ones, to make the sidebar to be legible. -->
+        <div class="col-lg-10 col-md-9" id="content-container">
+          <!-- The thumbnails in this carousel section will be shuffled from JavaScript. -->
+          <div class="video-section">
+            <!-- This is a bolded title section. -->
+            <div class="video-section-title">Trending In Your Network</div>
+            <div class="video-content">
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/trending_in_your_network/1.png" id="test" alt="Duke vs. Indiana 11/2017">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Duke vs. Indiana 11/2017</span><br/>
+                <span class="outlined author">by Annie B.</span>
+                <span class="outlined views">100k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/trending_in_your_network/2.png" alt="2011 Carolina Game">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">2011 Carolina Game</span><br/>
+                <span class="outlined author">by Payton B.</span>
+                <span class="outlined views">3k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/trending_in_your_network/3.png" alt="Basic Integration Problems">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Basic Integration Problems</span><br/>
+                <span class="outlined author">by Grace D.</span>
+                <span class="outlined views">1.2k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/trending_in_your_network/4.png" alt="Trump Recognizes Jerusalem">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Trump Recognizes Jerusalem</span><br/>
+                <span class="outlined author">by Olivia F.</span>
+                <span class="outlined views">29k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/trending_in_your_network/5.png" alt="Top 10 Funniest Videos">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Top 10 Funniest Videos</span><br/>
+                <span class="outlined author">by Lindsay S.</span>
+                <span class="outlined views">18k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/trending_in_your_network/6.png" alt="Teatro Kapital Madrid">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Teatro Kapital Madrid</span><br/>
+                <span class="outlined author">by Yael L.</span>
+                <span class="outlined views">46k views</span>
+              </div>
+            </div>
+          </div>
+          <!-- The thumbnails in this carousel section will be shuffled from JavaScript. -->
+          <div class="video-section">
+            <!-- This is a bolded title section. -->
+            <div class="video-section-title">Continue Watching</div>
+            <div class="video-section-subtitle">Hamilton Broadway Playlist</div>
+            <div class="video-content">
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/continue_watching/1.png" alt="70th Annual Tony Awards">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">70th Annual Tony Awards</span><br/>
+                <span class="outlined author">by Lucy G.</span>
+                <span class="outlined views">94k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/continue_watching/2.png" alt="Hamilton: Yorktown Live">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Hamilton: Yorktown Live</span><br/>
+                <span class="outlined author">by Alan M.</span>
+                <span class="outlined views">1.7k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/continue_watching/3.png" alt="Guns and Ships (Lyrics)">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Guns and Ships (Lyrics)</span><br/>
+                <span class="outlined author">by BJ M.</span>
+                <span class="outlined views">25k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/continue_watching/4.png" alt="My Shot Performance at White House">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">My Shot Performance at White House</span><br/>
+                <span class="outlined author">by Larry O.</span>
+                <span class="outlined views">1.1m views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/continue_watching/5.png" alt="Broadway Carpool Karaoke">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Broadway Carpool Karaoke</span><br/>
+                <span class="outlined author">by Harry P.</span>
+                <span class="outlined views">347 views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/continue_watching/6.png" alt="All King George Songs">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">All King George Songs</span><br/>
+                <span class="outlined author">by David S.</span>
+                <span class="outlined views">94k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/continue_watching/7.png" alt="Lin-Manuel Miranda Interview">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Lin-Manuel Miranda Interview</span><br/>
+                <span class="outlined author">by Iris R.</span>
+                <span class="outlined views">845k views</span>
+              </div>
+            </div>
+          </div>
+          <!-- The thumbnails in this carousel section will be shuffled from JavaScript. -->
+          <div class="video-section">
+            <!-- This is a bolded title section. -->
+            <div class="video-section-title">Theater of the Absurd</div>
+            <div class="video-section-subtitle">Watch with your community</div>
+            <div class="video-content">
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/1.jpg" alt="The Theater of the Absurd">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">The Theater of the Absurd</span><br/>
+                <span class="outlined author">by Frank G.</span>
+                <span class="outlined views">35k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/2.jpg" alt="Samuel Beckett: A Short Biography">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Samuel Beckett: A Short Biography</span><br/>
+                <span class="outlined author">by Kira M.</span>
+                <span class="outlined views">122k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/3.jpg" alt="An Interview with Eugène Ionesco">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">An Interview with Eugène Ionesco</span><br/>
+                <span class="outlined author">by John F.</span>
+                <span class="outlined views">1.4k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/4.jpg" alt="A Day with Albert Camus">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">A Day with Albert Camus</span><br/>
+                <span class="outlined author">by Ahmed M.</span>
+                <span class="outlined views">21k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/5.jpg" alt="Camus's Plague and its Symbols">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Camus's Plague and its Symbols</span><br/>
+                <span class="outlined author">by Amanda Z.</span>
+                <span class="outlined views">12k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/6.jpg" alt="A Representation of Ionesco's Rhinoceros">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Ionesco's Rhinoceros</span><br/>
+                <span class="outlined author">by Jay B.</span>
+                <span class="outlined views">28k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/7.jpg" alt="La Leçon, by Ionesco">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">La Leçon, by Ionesco</span><br/>
+                <span class="outlined author">by Christian B.</span>
+                <span class="outlined views">144k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/theater_of_the_absurd/8.jpg" alt="Mastroanni in the Stranger">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Mastroanni in the Stranger</span><br/>
+                <span class="outlined author">by Steph J.</span>
+                <span class="outlined views">1.6m views</span>
+              </div>
+            </div>
+          </div>
+          <!-- The thumbnails in this carousel section will be shuffled from JavaScript. -->
+          <div class="video-section">
+            <!-- This is a bolded title section. -->
+            <div class="video-section-title">Recommended For You</div>
+            <div class="video-content">
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/recommended_for_you/1.png" alt="Cameron Crazie Moments">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Cameron Crazie Moments</span><br/>
+                <span class="outlined author">by Donald W.</span>
+                <span class="outlined views">15k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/recommended_for_you/2.png" alt="Stranger Things Season 1 Trailer">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Stranger Things Season 1 Trailer</span><br/>
+                <span class="outlined author">by James M.</span>
+                <span class="outlined views">192k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/recommended_for_you/3.png" alt="Hilarious Cat Fails">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Hilarious Cat Fails</span><br/>
+                <span class="outlined author">by John K.</span>
+                <span class="outlined views">8.4k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/recommended_for_you/4.png" alt="Madrid's Top Sights">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Madrid's Top Sights</span><br/>
+                <span class="outlined author">by Ahmed M.</span>
+                <span class="outlined views">71k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/recommended_for_you/5.png" alt="Top Netflix Shows 2017">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Top Netflix Shows 2017</span><br/>
+                <span class="outlined author">by Amanda L.</span>
+                <span class="outlined views">16k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/recommended_for_you/6.png" alt="#5 Nebraska vs. Ohio State">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">#5 Nebraska vs. Ohio State</span><br/>
+                <span class="outlined author">by Jay B.</span>
+                <span class="outlined views">58k views</span>
+              </div>
+            </div>
+          </div>
+          <!-- The thumbnails in this carousel section will be shuffled from JavaScript. -->
+          <div class="video-section">
+            <!-- This is a bolded title section. -->
+            <div class="video-section-title">Watch Now</div>
+            <div class="video-section-subtitle">Didn't get to finish them? Now's your chance to watch.</div>
+            <div class="video-content">
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/watch_now/1.png" alt="Duke Basketball Hype Video 2017-18">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Duke Basketball Hype Video 2017-18</span><br/>
+                <span class="outlined author">by Frank S.</span>
+                <span class="outlined views">53k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/watch_now/2.png" alt="Marvin Bagley III Highlights">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Marvin Bagley III Highlights</span><br/>
+                <span class="outlined author">by Brooke B.</span>
+                <span class="outlined views">4.6k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/watch_now/3.png" alt="Maryland vs. Duke Harlem Shake">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Maryland vs. Duke Harlem Shake</span><br/>
+                <span class="outlined author">by Alex R.</span>
+                <span class="outlined views">9.3k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/watch_now/4.png" alt="Boyhood Full Movie">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Boyhood Full Movie</span><br/>
+                <span class="outlined author">by Alec L.</span>
+                <span class="outlined views">30k views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/watch_now/5.png" alt="Dear Evan Hansen Act 1">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Dear Evan Hansen Act 1</span><br/>
+                <span class="outlined author">by Mary Q.</span>
+                <span class="outlined views">106 views</span>
+              </div>
+              <div class="thumbnail description-text">
+                <img src="images/thumbnails/watch_now/6.png" alt="Stanford vs. UW 9/1/14">
+                <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                <span class="outlined title">Stanford vs. UW 9/1/14</span><br/>
+                <span class="outlined author">by Yared B.</span>
+                <span class="outlined views">85k views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- The sidebar is allocated more room on smaller screens, to ensure it remains legible when shrunken. -->
+        <div class="col-lg-2 col-md-3" id="sidebar-container">
+          <div class="sidebar">
+            <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+            <div>
+              <p class="sidebar-content hover-bold"><a href="./home.html">Home</a></p>
+              <p class="sidebar-content hover-bold">Trending</p>
+              <p class="sidebar-content hover-bold">My Profile</p>
+              <p class="sidebar-content hover-bold">My Network</p>
+            </div>
+            <hr>
+            <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+            <div>
+              <p class="sidebar-title">My Communities</p>
+              <div class="emoji">🎭</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Theater of the Absurd</a></p>
+              <div class="emoji">🏐</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Club Volleyball</a></p>
+              <div class="emoji">🏀</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Basketball Fans</a></p>
+              <div class="emoji">➗</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Math Nerds</a></p>
+              <div class="emoji">💙</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Duke in Madrid</a></p>
+            </div>
+            <hr>
+            <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+            <div>
+              <p class="sidebar-title">My Playlists</p>
+              <p class="sidebar-content hover-bold">Hamilton Broadway</p>
+              <p class="sidebar-content hover-bold">Funny Videos</p>
+              <p class="sidebar-content hover-bold">Stranger Things</p>
+              <p class="sidebar-content hover-bold">Calculus Studying</p>
+              <p class="sidebar-content hover-bold">Duke Basketball</p>
+            </div>
+            <hr>
+            <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+            <div>
+              <p class="sidebar-title">My Library</p>
+              <p class="sidebar-content hover-bold">History</p>
+              <p class="sidebar-content hover-bold">Watch Later</p>
+            </div>
+            <hr>
+            <div class="sidebar-small text-center">
+              <span>
+                <span class="sidebar-company-link">About</span>
+                &nbsp;
+                <span class="sidebar-company-link">Press</span>
+                &nbsp;
+                <span class="sidebar-company-link">Contact</span>
+                &nbsp;
+                <span class="sidebar-company-link">Careers</span>
+              </span>
+              <br><br>
+              <span>
+                © 2017 <span class="sidebar-company-link">Yomba, LLC</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Our footer includes terms, a privacy policy, and the creators of the website. -->
+  <footer class="description-text additional-text">
+    <p>
+      <a href="#">Privacy Policy</a> / <a href="#">Terms and Conditions</a><br>
+      <b>Designed by</b> Anya Bali / Elliott Bolzan / Carrie Mittl / Sara Shmueli
+    </p>
+  </footer>
+  <!-- We store JavaScript at the bottom for quicker loading. -->
+  <!-- jQuery, jQueryUI, Popper.js, Slick and Boostrap are loaded. -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <!-- Our project JavaScript. -->
+  <script src="script/common.js"></script>
+  <script src="script/home.js"></script>
+</body>
+</html>

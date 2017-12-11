@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Watch: Hartsville Foxes vs. Marion Hawks</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- jQueryUI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- Slick: Carousel for Images -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
+  <!-- Project CSS -->
+  <link rel="stylesheet" type="text/css" href="style/yomba.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <header>
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- We allocate two columns for our website logo. -->
+        <div class="col-md-2 nav-padded">
+          <a class="navbar-brand" href="./home.html">
+            <img id="logo" src="images/logo.png" alt="Yomba">
+          </a>
+        </div>
+        <div class="col-md-5 nav-padded text-center">
+          <!-- We allocate 5 columns for our search bar. It supports autocomplete and variable placeholders. -->
+          <form>
+            <div class="input-group">
+              <input class="form-control form-custom" id="search" type="text" placeholder="Search" aria-label="Search">
+              <span class="input-group-btn">
+                <button class="btn dominant-color" type="submit"><img src="images/search.png" alt="Search"></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-5 nav-padded text-md-right">
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <div class="dropdown show" id="show-notifications">
+            <a href="#" role="button" id="notificationsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="icon" src="images/bell.png" alt="Notifications">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
+              <a class="dropdown-item" href="#">Rex B. shared a new video.</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Your upload has been processed!</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">4 videos we think you'd enjoy.</a>
+            </div>
+          </div>
+          <!-- Clicking this button collapses the sidebar. -->
+          <a href="#">
+            <img class="icon" id="more" src="images/more.png" alt="Sidebar">
+          </a>
+          <!-- This log in button is only shown if the user is logged out. -->
+          <form action="login.html" id="show-login">
+            <input class="btn dominant-color" type="submit" value="Login">
+          </form>
+          <!-- What follows is a Bootstrap / Popper.js dropdown menu. -->
+          <!-- The user can use it to log out.-->
+          <div class="dropdown show" id="show-user">
+            <a href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img id="profile" class="icon rounded" src="images/profile.png" alt="Profile">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">Upload a Video</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Account</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">My Communities</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="javascript:logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- The wrap div is necessary for our footer to remain at the bottom of our content. -->
+  <div id="wrap">
+    <!-- Bootstrap's wrapper for responsive layouts. -->
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <!-- Our main content is 10 columns wide on full screens, but only 9 on smaller ones, to make the sidebar to be legible. -->
+        <div class="col-lg-10 col-md-9" id="content-container">
+          <div class="row">
+            <!-- We offset the video, to ensure it does not take up the whole scren. The proportions need be different on large screens, as well. -->
+            <div class="offset-md-1 col-md-10 offset-lg-2 col-lg-8">
+              <div class="video-wrapper">
+                <!-- Here, we use Bootstrap's classes to ensure our embedded video acts responsively. -->
+                <div class="embed-responsive embed-responsive-16by9">
+                  <video controls>
+                    <!-- We have backup text, in case the video cannot be loaded. -->
+                    <source src="images/soccer.mp4" type="video/mp4">Your browser does not support this video.
+                    </video>
+                  </div>
+                  <div class="metadata">
+                    <!-- Our metadata is outlined, to provide color contrast and highlight the most important parts. -->
+                    <!-- The title is in a darker shade. -->
+                    <span class="video-title outlined title">Hartsville Foxes vs. Marion Hawks</span>
+                    <br>
+                    <span class="video-title outlined community-name">Community:</span>
+                    <!-- The community is also in a darker shade. -->
+                    <span class="video-title outlined community">Tennessee High School Soccer</span>
+                    <br>
+                    <span class="video-title outlined views">44k views</span>
+                    <hr>
+                    <!-- The channel and author info is centered, to put emphasis on Yomba's social, human-driven approach to video. -->
+                    <div class="video-author">
+                      <img src="images/profiles/10.jpg" alt="Channel Photo">
+                    </div>
+                    <div class="text-center sidebar-content">
+                      <p>
+                        by Jim B.<br>
+                        June 19, 2016
+                      </p>
+                    </div>
+                  </div>
+                  <hr>
+                  <p class="video-description sidebar-content">
+                    Trying out my new slow-motion camera to get some promo footage for the 2016
+                    Regional Soccer Tournament. Let me know what you think in the comments, friends!
+                  </p>
+                  <br>
+                  <!-- This Bootstrap button allows for a toggling of the comment section. -->
+                  <button class="btn dominant-color show-comments" type="button" data-toggle="collapse" data-target="#comments" aria-expanded="false" aria-controls="comments">
+                    Show Comments
+                  </button>
+                  <br>
+                  <!-- This comment section can be collapsed. -->
+                  <div class="collapse" id="comments">
+                    <div class="sidebar-content comment-container">
+                      <!-- Each comment is comprised of an image, an author, and the comment's content. -->
+                      <div class="comment">
+                        <div class="comment-image-container">
+                          <img src="images/profiles/12.jpg" alt="Mark Z.">
+                        </div>
+                        <div class="comment-text">
+                          <span class="comment-author">Mark Z.</span>
+                          <p>Love this video, Jim! Can't wait for the tournament.</p>
+                        </div>
+                      </div>
+                      <!-- Each comment is comprised of an image, an author, and the comment's content. -->
+                      <div class="comment">
+                        <div class="comment-image-container">
+                          <img src="images/profiles/4.jpg" alt="Alice F.">
+                        </div>
+                        <div class="comment-text">
+                          <span class="comment-author">Alice F.</span><br>
+                          <p>The slow motion is really interesting. Looks like promo footage for a professional event.</p>
+                        </div>
+                      </div>
+                      <!-- Each comment is comprised of an image, an author, and the comment's content. -->
+                      <div class="comment">
+                        <div class="comment-image-container">
+                          <img src="images/profiles/2.jpg" alt="Joan M.">
+                        </div>
+                        <div class="comment-text">
+                          <span class="comment-author">Joan M.</span><br>
+                          <p>I'm not the biggest fan of the slow-motion, but I am excited for the tournament. I'm excited to see who comes out on top!</p>
+                        </div>
+                      </div>
+                      <!-- Each comment is comprised of an image, an author, and the comment's content. -->
+                      <div class="comment">
+                        <div class="comment-image-container">
+                          <img src="images/profiles/14.jpg" alt="Marcos L.">
+                        </div>
+                        <div class="comment-text">
+                          <span class="comment-author">Marcos L.</span>
+                          <p>Definitely rooting for the Hawks this year.</p>
+                        </div>
+                      </div>
+                      <!-- Each comment is comprised of an image, an author, and the comment's content. -->
+                      <div class="comment">
+                        <div class="comment-image-container">
+                          <img src="images/profiles/7.jpg" alt="Eva F.">
+                        </div>
+                        <div class="comment-text">
+                          <span class="comment-author">Eva F.</span>
+                          <p>It's going to be a great game!</p>
+                        </div>
+                      </div>
+                      <!-- Each comment is comprised of an image, an author, and the comment's content. -->
+                      <div class="comment">
+                        <div class="comment-image-container">
+                          <img src="images/profiles/11.jpg" alt="Jason L.">
+                        </div>
+                        <div class="comment-text">
+                          <span class="comment-author">Jason B.</span>
+                          <p>Hartsville Foxes all the way! Can't wait to see my team win.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- The current, fictive user can add his or her own comments to this page by using this form. -->
+                    <form class="comment-form">
+                      <div class="form-row">
+                        <div class="col-sm-12">
+                          <input class="form-control form-custom" id="comment-draft" type="text" placeholder="Type a comment..." aria-label="Type a comment...">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- This section shows thumbnails in a video carousel. It will be randomly shuffled from JavaScript. -->
+            <div class="video-section">
+              <div class="video-section-title">You'll Also Enjoy</div>
+              <div class="video-content">
+                <div class="thumbnail description-text">
+                  <img src="images/thumbnails/recommended_for_you/1.png" alt="Cameron Crazie Moments">
+                  <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                  <span class="outlined title">Cameron Crazie Moments</span><br/>
+                  <span class="outlined author">by Donald W.</span>
+                  <span class="outlined views">15k views</span>
+                </div>
+                <div class="thumbnail description-text">
+                  <img src="images/thumbnails/recommended_for_you/2.png" alt="Stranger Things Season 1 Trailer">
+                  <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                  <span class="outlined title">Stranger Things Season 1 Trailer</span><br/>
+                  <span class="outlined author">by James M.</span>
+                  <span class="outlined views">192k views</span>
+                </div>
+                <div class="thumbnail description-text">
+                  <img src="images/thumbnails/recommended_for_you/3.png" alt="Hilarious Cat Fails">
+                  <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                  <span class="outlined title">Hilarious Cat Fails</span><br/>
+                  <span class="outlined author">by John K.</span>
+                  <span class="outlined views">8.4k views</span>
+                </div>
+                <div class="thumbnail description-text">
+                  <img src="images/thumbnails/recommended_for_you/4.png" alt="Madrid's Top Sights">
+                  <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                  <span class="outlined title">Madrid's Top Sights</span><br/>
+                  <span class="outlined author">by Ahmed M.</span>
+                  <span class="outlined views">71k views</span>
+                </div>
+                <div class="thumbnail description-text">
+                  <img src="images/thumbnails/recommended_for_you/5.png" alt="Top Netflix Shows 2017">
+                  <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                  <span class="outlined title">Top Netflix Shows 2017</span><br/>
+                  <span class="outlined author">by Amanda L.</span>
+                  <span class="outlined views">16k views</span>
+                </div>
+                <div class="thumbnail description-text">
+                  <img src="images/thumbnails/recommended_for_you/6.png" alt="#5 Nebraska vs. Ohio State">
+                  <!-- These different outlined pieces of text contrast in color, to give more importance to the title. -->
+                  <span class="outlined title">#5 Nebraska vs. Ohio State</span><br/>
+                  <span class="outlined author">by Jay B.</span>
+                  <span class="outlined views">58k views</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- The sidebar is allocated more room on smaller screens, to ensure it remains legible when shrunken. -->
+          <div class="col-lg-2 col-md-3" id="sidebar-container">
+            <div class="sidebar">
+              <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+              <div>
+                <p class="sidebar-content hover-bold"><a href="./home.html">Home</a></p>
+                <p class="sidebar-content hover-bold">Trending</p>
+                <p class="sidebar-content hover-bold">My Profile</p>
+                <p class="sidebar-content hover-bold">My Network</p>
+              </div>
+              <hr>
+              <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+              <div>
+                <p class="sidebar-title">My Communities</p>
+                <div class="emoji">🎭</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Theater of the Absurd</a></p>
+                <div class="emoji">🏐</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Club Volleyball</a></p>
+                <div class="emoji">🏀</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Basketball Fans</a></p>
+                <div class="emoji">➗</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Math Nerds</a></p>
+                <div class="emoji">💙</div><p class="sidebar-content hover-bold emoji-text"><a href="./communities.html">Duke in Madrid</a></p>
+              </div>
+              <hr>
+              <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+              <div>
+                <p class="sidebar-title">My Playlists</p>
+                <p class="sidebar-content hover-bold">Hamilton Broadway</p>
+                <p class="sidebar-content hover-bold">Funny Videos</p>
+                <p class="sidebar-content hover-bold">Stranger Things</p>
+                <p class="sidebar-content hover-bold">Calculus Studying</p>
+                <p class="sidebar-content hover-bold">Duke Basketball</p>
+              </div>
+              <hr>
+              <!-- This is a titled sidebar subsection. On hover, its elements will be bolded and the cursor will become a pointer. -->
+              <div>
+                <p class="sidebar-title">My Library</p>
+                <p class="sidebar-content hover-bold">History</p>
+                <p class="sidebar-content hover-bold">Watch Later</p>
+              </div>
+              <hr>
+              <div class="sidebar-small text-center">
+                <span>
+                  <span class="sidebar-company-link">About</span>
+                  &nbsp;
+                  <span class="sidebar-company-link">Press</span>
+                  &nbsp;
+                  <span class="sidebar-company-link">Contact</span>
+                  &nbsp;
+                  <span class="sidebar-company-link">Careers</span>
+                </span>
+                <br><br>
+                <span>
+                  © 2017 <span class="sidebar-company-link">Yomba, LLC</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- We store JavaScript at the bottom for quicker loading. -->
+    <footer class="description-text additional-text">
+      <p>
+        <a href="#">Privacy Policy</a> / <a href="#">Terms and Conditions</a><br>
+        <b>Designed by</b> Anya Bali / Elliott Bolzan / Carrie Mittl / Sara Shmueli
+      </p>
+    </footer>
+    <!-- We store JavaScript at the bottom for quicker loading. -->
+    <!-- jQuery, jQueryUI, Popper.js, Slick and Boostrap are loaded. -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- Our project JavaScript. -->
+    <script src="script/common.js"></script>
+    <script src="script/video.js"></script>
+  </body>
+  </html>
